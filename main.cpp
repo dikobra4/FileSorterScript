@@ -4,7 +4,8 @@
 int main() {
     std::string directory;    
     std::cout << "Enter target directory: ";
-    std::cin >> directory;
+    std::cin.ignore();
+    std::getline(std::cin, directory);
 
     FileSorter sorter;
     sorter.sortFiles(directory);
