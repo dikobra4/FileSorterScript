@@ -14,6 +14,15 @@ void FileSorter::sortFiles(const std::filesystem::path& directory){
     }
 }
 
+void FileSorter::showFiles(const std::filesystem::path& directory){
+    std::cout << "Directory path: " << directory << std::endl;
+    for (const auto& entry : std::filesystem::directory_iterator(directory)) {
+        if (std::filesystem::is_regular_file(entry)) {
+            std::cout << entry.path() << std::endl;
+        }
+    }
+}
+
 std::string FileSorter::determineFileType(const std::filesystem::path& file) const {
     static const std::set<std::string> imageExtentions{".jpg", ".jpeg", ".png", ".gif", };
     static const std::set<std::string> docExtentions{".doc", ".docx", ".pdf", };
